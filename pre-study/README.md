@@ -38,20 +38,20 @@ resolution changes and step size / "jumping" output below.)*
 ## Datasheet Notes
 
 ### VL53L0X (ToF distance sensor)
-- Physical quantity & principle:
-- Supply voltage:
-- Interface / I²C address:
-- Range / resolution / accuracy / response time:
-- Temperature dependence:
-- Conditions / limitations warned about:
+- Physical quantity & principle: Absolute distance. Time-of-Flight — a 940 nm VCSEL laser fires invisible pulses and the sensor times the photons returning from the target (SPAD array). Range is independent of target colour/reflectance.
+- Supply voltage: 2.6–3.5 V (bare chip); breakout modules 2.6–5.5 V via onboard regulator.
+- Interface / I²C address: I²C (+ XSHUT shutdown, GPIO1 interrupt). 7-bit address 0x29 (written 0x52 in 8-bit form). Programmable but resets to 0x29 on every power cycle.
+- Range / resolution / accuracy / response time: ~30 mm to 2000 mm; accuracy ≈ ±3%; response < 30 ms (configurable timing budget trades speed for range/accuracy).
+- Temperature dependence: operating −20 to +70 °C.
+- Conditions / limitations: accuracy drops significantly beyond ~1.5 m; noisy on highly reflective surfaces; two identical units clash on the bus (same default 0x29) and must be re-addressed via XSHUT.
 
 ### MPR121 (capacitive touch sensor)
-- Physical quantity & principle:
-- Supply voltage:
-- Interface / I²C address:
-- Range / resolution / accuracy / response time:
-- Temperature dependence:
-- Conditions / limitations warned about:
+- Physical quantity & principle: Touch / proximity. Capacitive sensing — a finger near an electrode changes capacitance; the chip uses a constant-current charge method and measures the change in time constant.
+- Supply voltage: 1.71–3.6 V (modules without regulator: 2.5–3.6 V). 3.3 V device — do not exceed 3.6 V.
+- Interface / I²C address: I²C (+ IRQ interrupt). Default 0x5A; selectable to 0x5A/0x5B/0x5C/0x5D via the ADDR pin → up to 4 devices on one bus.
+- Channels / response: 12 electrode inputs + 1 virtual proximity channel; configurable sample period (e.g. 16 ms) with touch/release threshold and debounce.
+- Power: 29 µA at 16 ms sampling; 3 µA in stop mode.
+- Conditions / limitations: no onboard regulator (watch the 3.6 V limit); electrode wire length/material affects triggering, thresholds must be tuned; 8 pins are multiplexed as LED/GPIO.
 
 ---
 
