@@ -32,6 +32,11 @@ resolution changes and step size / "jumping" output below.)*
 - Observations:
   - (fill in: integer range and step size at each resolution)
   - (fill in: what happened when the step size was set too coarse)
+<img width="416" height="281" alt="image" src="https://github.com/user-attachments/assets/e0c3a2a7-2782-4c6c-b047-83603ed27a9d" />
+<img width="415" height="220" alt="image" src="https://github.com/user-attachments/assets/f71ba0cd-80b7-40f9-904a-466fdd129e48" />
+<img width="415" height="214" alt="image" src="https://github.com/user-attachments/assets/a4789363-0e2c-4d1f-8fdf-601eee458dd2" />
+<img width="415" height="238" alt="image" src="https://github.com/user-attachments/assets/81a81d08-fe06-4962-832e-45910fa0f3d3" />
+
 
 ---
 
