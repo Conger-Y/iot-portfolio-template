@@ -33,9 +33,6 @@ ADC resolution test:
 - 10-bit → raw range 0..1023  (1024 steps)
 - 12-bit → raw range 0..4095  (4096 steps)
 
-Observation: changing the resolution changed only the number of discrete steps
-(the resolution), not the accuracy. When the `map()` upper bound no longer matched
-the actual raw range, the output "jumped" or stopped reaching full brightness.
 
 ---
 
