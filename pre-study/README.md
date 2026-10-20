@@ -2,7 +2,7 @@
 
 **Name:** Conger-Y
 **Course:** Sensors and Actuators, WS 2026/27, HSBI Gütersloh
-**Instructor:** Prof. Dr. Ulrich Norbisrath (Ulno)
+
 
 ---
 
