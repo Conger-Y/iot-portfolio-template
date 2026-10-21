@@ -140,34 +140,15 @@ a motor or relay switches off.
 
 ---
 
-Physical Quantity:
-Body weight (force / gravity)
-       │
-       │  (The load bends a metal beam)
-       ▼
-Sensor (transducer):
-Strain gauge
-       │
-       │  (Deforms, and its resistance changes ΔR)
-       ▼
-Signal Conditioning:
-(amplifier, divider, filter, reference)
-       │
-       │  (Bridge/divider circuit turns resistance change into voltage change)
-       ▼
-ADC:
-(sample, filter, calibrate)
-       │
-       │  (Converts analog voltage into a digital value)
-       ▼
-MCU:
-(MQTT, Node-RED, dashboard)
-       │  ├─► Uses calibration curve → LCD shows '70 kg' / Buzzer beeps
-       │
-       │  Command (PWM / driver)
-       ▼
-Actuator / System:
-(acts on the world)
+```mermaid
+flowchart TD
+    A["Physical quantity: body weight (force / gravity)"]
+    A -->|"the load bends a metal beam"| B["Sensor (transducer): strain gauge"]
+    B -->|"the strain gauge deforms, and its resistance changes"| C["Signal conditioning:<br>(amplifier, divider, filter, reference)"]
+    C -->|"a bridge / voltage-divider circuit turns the resistance change into a voltage change"| D["ADC:<br>(sample, filter, calibrate)"]
+    D -->|"converts the analog voltage into a digital value"| E["MCU:<br>(MQTT, Node-RED, dashboard)"]
+    E -->|"uses a calibration curve to convert the digital value into kilograms"| F["Output:<br>the LCD shows 70 kg / a buzzer beeps"]
+    E -->|"command (PWM / driver)"| G["System:<br>(acts on the world)"]
 
 Physical quantity: body weight (force / gravity)
 →  — the load bends a metal beam, the strain gauge deforms, and its resistance changes.
