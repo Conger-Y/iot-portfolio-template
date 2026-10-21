@@ -138,18 +138,15 @@ cannot provide. A driver sits in between and amplifies the current, so the pin i
 motor still runs. The driver also isolates the microcontroller and blocks the reverse voltage spike when
 a motor or relay switches off.
 
----
-
 ```mermaid
 flowchart TD
-    A["Physical quantity: body weight (force / gravity)"]
-    A -->|"the load bends a metal beam"| B["Sensor (transducer): strain gauge"]
-    B -->|"the strain gauge deforms, and its resistance changes"| C["Signal conditioning:<br>(amplifier, divider, filter, reference)"]
-    C -->|"a bridge / voltage-divider circuit turns the resistance change into a voltage change"| D["ADC:<br>(sample, filter, calibrate)"]
-    D -->|"converts the analog voltage into a digital value"| E["MCU:<br>(MQTT, Node-RED, dashboard)"]
-    E -->|"uses a calibration curve to convert the digital value into kilograms"| F["Output:<br>the LCD shows 70 kg / a buzzer beeps"]
-    E -->|"command (PWM / driver)"| G["System:<br>(acts on the world)"]
-
+    A["Physical quantity: body weight (force / gravity)"] --> B["Sensor (transducer): strain gauge"]
+    B --> C["Signal conditioning: amplifier, divider, filter, reference"]
+    C --> D["ADC: sample, filter, calibrate"]
+    D --> E["MCU: MQTT, Node-RED, dashboard"]
+    E --> F["Output: LCD shows 70 kg / buzzer beeps"]
+    E --> G["System: acts on the world"]
+```
 Physical quantity: body weight (force / gravity)
 →  — the load bends a metal beam, the strain gauge deforms, and its resistance changes.
 → a bridge / voltage-divider circuit turns the resistance change into a voltage change.
