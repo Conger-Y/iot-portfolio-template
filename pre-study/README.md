@@ -143,14 +143,40 @@ a motor or relay switches off.
 ## Guiding Questions
 
 ### 1. The chain
-Device I own: a digital bathroom scale.
+
+
+**Sensor (transducer): strain gauge**
+        |
+        v
+ **Signal conditioning:**
+        |
+        v
+  signal conditioning
+  (amplifier, divider,
+   filter, reference)
+        |
+        v
+  **ADC:**
+  (sample, filter, calibrate)
+        |
+        v
+→ **MCU:**
+  (MQTT, Node-RED, dashboard)
+        |
+        |  command
+        |  (PWM / driver)
+        v
+→ **System:**
+  (acts on the world)**
+
+
 
 Physical quantity: body weight (force / gravity)
-→ **Sensor (transducer): strain gauge** — the load bends a metal beam, the strain gauge deforms, and its resistance changes.
-→ **Signal conditioning:** a bridge / voltage-divider circuit turns the resistance change into a voltage change.
-→ **ADC:** converts the analog voltage into a digital value.
-→ **MCU:** uses a calibration curve to convert the digital value into kilograms.
-→ **System:** the LCD shows 70 kg / a buzzer beeps.
+→  — the load bends a metal beam, the strain gauge deforms, and its resistance changes.
+→ a bridge / voltage-divider circuit turns the resistance change into a voltage change.
+→ converts the analog voltage into a digital value.
+ uses a calibration curve to convert the digital value into kilograms.
+ the LCD shows 70 kg / a buzzer beeps.
 
 ### 2. Wokwi observation
 The full analog range had 4096 discrete steps at 12-bit resolution. After changing the ADC resolution
