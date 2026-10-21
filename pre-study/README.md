@@ -140,35 +140,13 @@ a motor or relay switches off.
 
 ---
 
-## Guiding Questions
-
-### 1. The chain
-
-
-**Sensor (transducer): strain gauge**
-        |
-        v
- **Signal conditioning:**
-        |
-        v
-  signal conditioning
-  (amplifier, divider,
-   filter, reference)
-        |
-        v
-  **ADC:**
-  (sample, filter, calibrate)
-        |
-        v
-→ **MCU:**
-  (MQTT, Node-RED, dashboard)
-        |
-        |  command
-        |  (PWM / driver)
-        v
-→ **System:**
-  (acts on the world)**
-
+graph TD
+    A["Physical Quantity<br><b>Body weight</b> (force / gravity)"] -->|"The load bends a metal beam"| B["Sensor (transducer)<br><b>Strain gauge</b>"]
+    B -->|"Deforms, and its resistance changes (ΔR)"| C["Signal Conditioning<br>(amplifier, divider, filter, reference)"]
+    C -->|"A bridge / voltage-divider circuit turns resistance change into voltage change"| D["ADC<br>(sample, filter, calibrate)"]
+    D -->|"Converts analog voltage into digital value"| E["MCU<br>(MQTT, Node-RED, dashboard)"]
+    E -->|"Uses calibration curve to convert digital value into kg"| F["Output / Display<br>Shows '70 kg' / buzzer beeps"]
+    E -->|"Command (PWM / driver)"| G["Actuator / System<br>(acts on the world)"]
 
 
 Physical quantity: body weight (force / gravity)
