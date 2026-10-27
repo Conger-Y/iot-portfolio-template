@@ -17,13 +17,16 @@ https://github.com/user-attachments/assets/15933de1-f06e-4084-93d4-d7b6033f6306
 
 
 
-## Task ...
+## Task  2: Arduino IDE, Serial Console, and Visualization
+
+
+<img width="2049" height="1280" alt="29ca29d32cd3b4c32258bbec117bab04" src="https://github.com/user-attachments/assets/1f12e5f8-c2be-4f63-9233-f0bbc77d1cae" />
 
 This task was executed by my partner. The implementation was about ... 
 It is [here](https://github.com/partner/iot-portfolio/Module02/Readme.md#task-2).
 
 ## Reflection 2
-[Reflection 2](/Reflections/ref02.md)
+At the beginning of this task, my partner and I couldn't figure out how to properly connect the ESP32 to the computer. It wasn't until we received guidance from our professor and downloaded the necessary plugins that we finally got it running successfully
 
 ## Task 3: The ADC Precision Dance
 ### Objectives
@@ -125,10 +128,11 @@ void loop() {
 > 
 > **Recommendation**: Always map or restrict analog sensor signals within the **$0.15\text{ V} - 2.9\text{ V}$** linear range, or use lookup tables / non-linear calibration polynomial routines (`esp_adc_cal`) when high precision is required[cite: 1, 2, 3, 4, 5, 6].
 
-If the module is longer than 1 week, you might have several reflections within it. If not, delete this and the following.
+
 
 ## Reflection 3
-[Reflection 3](/Reflections/ref03.md)
+
+
 
 
 
@@ -241,6 +245,9 @@ $$R_{LDR} = 10,000\ \Omega \cdot \frac{3.300\text{ V} - 0.988\text{ V}}{0.988\te
 
 
 https://github.com/user-attachments/assets/b7737f9d-c485-45a4-8086-59e24560644d
+
+## Reflection 4
+Initially, we hypothesized an inverse relationship between light intensity and the ADC value—meaning the brighter the light, the lower the ADC reading. When we uncovered the photoresistor and observed an instantaneous drop in the ADC value, our hypothesis was confirmed
 
 
 
