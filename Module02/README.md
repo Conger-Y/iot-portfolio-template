@@ -64,7 +64,7 @@ void loop() {
 
   delay(100);
 }
-
+```
 ---
 
 ###  Data Measurement & Results
@@ -129,6 +129,12 @@ If the module is longer than 1 week, you might have several reflections within i
 
 ## Reflection 3
 [Reflection 3](/Reflections/ref03.md)
+
+
+
+-----------
+
+
 
 
 ## Task 4: An Analog Light Sensor — the LDR
