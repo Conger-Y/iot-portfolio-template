@@ -12,7 +12,6 @@ Guided by AI, we learned about the characteristics of a breadboard by asking for
 
 Then, following the AI's prompts, we installed a push button on the breadboard and successfully performed pull-up/pull-down operations on the LED light using the button.
 
-https://github.com/user-attachments/assets/15933de1-f06e-4084-93d4-d7b6033f6306
 
 
 
@@ -27,6 +26,10 @@ It is [here](https://github.com/partner/iot-portfolio/Module02/Readme.md#task-2)
 
 ## Reflection 2
 At the beginning of this task, my partner and I couldn't figure out how to properly connect the ESP32 to the computer. It wasn't until we received guidance from our professor and downloaded the necessary plugins that we finally got it running successfully
+
+
+
+https://github.com/user-attachments/assets/15933de1-f06e-4084-93d4-d7b6033f6306
 
 ## Task 3: The ADC Precision Dance
 ### Objectives
