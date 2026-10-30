@@ -24,12 +24,7 @@ Task 6
 Register
 <img width="1280" height="800" alt="d9ffb1252003348cba3e53a42e9509d0" src="https://github.com/user-attachments/assets/b92d0430-e85a-4e0a-b009-edd2e5593da7" />
 
-
-To understand the underlying principles without relying on third-party libraries, I directly used the native Wire library to initiate communication with the sensor at address 0x4F and located the register storing the temperature data (address 0x00).
-
-Reading Raw Data: Successfully read 2 bytes of raw hexadecimal data, for instance, a high byte of 0x16 and a low byte of 0xF8.
-
-Data Reconstruction Process: According to the data structure instructions in the LM75 datasheet, I performed bit concatenation and bit-shifting operations on the two read raw bytes. Then, by applying the resolution/scaling factor provided in the datasheet, I manually calculated the actual physical temperature (e.g., resulting in 22.969 °C).
+To understand the underlying principles without relying on third-party libraries, an AI-generated code was executed. This code directly utilizes the native Wire library to initiate communication with the sensor at address 0x4F and locates the register storing the temperature data (address 0x00).
 
 Library
 <img width="1280" height="800" alt="7238bdef095a67c00386a94fca33ff06" src="https://github.com/user-attachments/assets/ee430748-4a05-4dc2-9473-e4df3b899582" />
@@ -44,3 +39,14 @@ Conclusion: This proves that my understanding of this I²C sensor's data type, b
 
 
 Task 7
+
+
+<img width="1280" height="800" alt="ae3e69ed8e2ddc04dec56448c1f0b7b1" src="https://github.com/user-attachments/assets/475ad011-a635-44ca-b0a1-39a60b6aef29" />
+
+A second I²C device was added to the existing bus. The SDA and SCL pins of both devices were connected in parallel to the same SCL (GPIO 22) and SDA (GPIO 21) pins on the ESP32 without using any extra data pins. After powering both devices and running the I²C scanner, the Serial Monitor successfully detected two distinct addresses simultaneously: 0x27 and 0x4F. This confirms that both physical devices are successfully mounted on the same bus.
+
+
+I²C uses a Master-Slave architecture. The ESP32 acts as the master, and the sensors act as slaves. Each slave device on the bus has a unique hardware address (e.g., 0x27 and 0x4F). When the master initiates communication, it broadcasts the target device's address over the bus. Only the device with the matching address will respond and process the data, while all other devices ignore the communication and remain silent. This addressing mechanism ensures no data collision occurs on the shared SCL and SDA lines.
+<img width="2304" height="4096" alt="050ac5a3816e0619b81b4d9b5c0e759e" src="https://github.com/user-attachments/assets/a4ada9d4-bedd-48a3-8b79-e5197a3514d8" />
+
+Operation and Observation: An AI-written comprehensive Arduino sketch was executed, which utilizes the libraries for both the temperature sensor (0x4F) and the LCD display (0x27). The program successfully reads the temperature data from the LM75 and transmits this data in real-time to be displayed on the LCD screen, using the exact same pair of I²C pins (SDA=21 / SCL=22)
