@@ -1,3 +1,4 @@
+<img width="1280" height="799" alt="a3075b3d98aafcfc2e634419550ab8b7" src="https://github.com/user-attachments/assets/745fbeb3-f3ff-4a0b-8111-9d2ec9448eba" />
 
 # Task 1: The LDR's Transfer Function — Resistance vs. Light
 
@@ -67,6 +68,7 @@ Although the linear
   - **10-bit:** Step size $= 0.25^\circ\text{C}$, conversion time $\approx 187.5\text{ ms}$
   - **11-bit:** Step size $= 0.125^\circ\text{C}$, conversion time $\approx 375\text{ ms}$
   - **12-bit:** Step size $= 0.0625^\circ\text{C}$, conversion time $\approx 750\text{ ms}$
+<img width="1280" height="799" alt="a3075b3d98aafcfc2e634419550ab8b7" src="https://github.com/user-attachments/assets/7e2a13e8-3817-44c3-8f10-2756046f932c" />
 
 ---
 
@@ -81,6 +83,7 @@ Empirical test results using the ESP32 and DallasTemperature library:
 ### Resolution vs. Accuracy for Frost Decision
 - **Absolute Accuracy ($\pm 0.5^\circ\text{C}$):** Limits the reliability of absolute threshold decisions. For example, a reading of $+0.3^\circ\text{C}$ could physically be $-0.2^\circ\text{C}$.
 - **Quantization Resolution ($0.0625^\circ\text{C}$):** Does not overcome intrinsic sensor inaccuracy, but enables precise tracking of fine thermal dynamics and rate of temperature drop before reaching freezing temperatures.
+<img width="1280" height="799" alt="a3075b3d98aafcfc2e634419550ab8b7" src="https://github.com/user-attachments/assets/80e7f876-d568-4e1d-8f2f-d105de6fd9fd" />
 
 ---
 
@@ -97,6 +100,8 @@ The sensor probe was rapidly transitioned from cold water to warm water at 12-bi
 
 ### Air vs. Water Response Comparison
 Thermal response in still air is significantly slower than in stirred water. This is because water has a substantially higher thermal conductivity and volumetric heat capacity than air, resulting in a much higher convective heat transfer coefficient ($h_{\text{water}} \gg h_{\text{air}}$).
+<img width="1280" height="800" alt="06e50db1c1781a416911b4ac23742310" src="https://github.com/user-attachments/assets/a1236af3-c56d-4f58-871f-17f83f33609d" />
+<img width="1280" height="800" alt="9a56dca9d9561b17b3ac9066e79e6b38" src="https://github.com/user-attachments/assets/2989ae1c-c5ef-4137-80e4-891c4d0057f8" />
 
 ---
 
@@ -109,6 +114,7 @@ Both the DS18B20 probe and a reference thermometer were placed close together in
 - **DS18B20 Reading Spread:** $0.0625^\circ\text{C}$ ($22.3750^\circ\text{C} \sim 22.4375^\circ\text{C}$)
 - **Reference Thermometer Reading:** $21.0^\circ\text{C}$
 - **Mean Difference ($T_{\text{DS18B20}} - T_{\text{ref}}$):** $\approx +1.43^\circ\text{C}$
+<img width="1278" height="795" alt="ae85d828997d04cab043571b4a983fd7" src="https://github.com/user-attachments/assets/bc3ed5c5-fd1b-45f3-87ed-33687c9b6c33" />
 
 ### Decision on Offset Correction
 The DS18B20 demonstrated exceptional short-term repeatability with an extremely low noise spread ($0.0625^\circ\text{C}$). Although an average difference of $+1.43^\circ\text{C}$ was observed relative to the reference thermometer, **this difference was not applied as an offset correction**. Because the absolute accuracy of the reference thermometer itself was unverified, applying this correction risks introducing an uncalibrated systematic error.
