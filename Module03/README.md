@@ -56,7 +56,62 @@ Although the linear
 
 
 
-### Task 2:  The DS18B20 — resolution, accuracy, and response time
+# Task 2: The DS18B20 — Resolution, Accuracy, and Response Time
+
+## 1. Datasheet Specifications & Key Parameters
+
+- **Interface:** 1-Wire protocol (requires a $4.7\text{ k}\Omega$ pull-up resistor to $3.3\text{V}$).
+- **Factory Accuracy:** $\pm 0.5^\circ\text{C}$ across the $-10^\circ\text{C}$ to $+85^\circ\text{C}$ range.
+- **Configurable Resolutions & Theoretical Conversion Times:**
+  - **9-bit:** Step size $= 0.5^\circ\text{C}$, conversion time $\approx 93.75\text{ ms}$
+  - **10-bit:** Step size $= 0.25^\circ\text{C}$, conversion time $\approx 187.5\text{ ms}$
+  - **11-bit:** Step size $= 0.125^\circ\text{C}$, conversion time $\approx 375\text{ ms}$
+  - **12-bit:** Step size $= 0.0625^\circ\text{C}$, conversion time $\approx 750\text{ ms}$
+
+---
+
+## 2. Empirical Resolution & Conversion Observations
+
+Empirical test results using the ESP32 and DallasTemperature library:
+- **9-bit:** e.g., $20.5000^\circ\text{C}$ (Step size $= 0.5000^\circ\text{C}$)
+- **10-bit:** e.g., $20.7500^\circ\text{C}$ (Step size $= 0.2500^\circ\text{C}$)
+- **11-bit:** e.g., $21.0000^\circ\text{C}$ (Step size $= 0.1250^\circ\text{C}$)
+- **12-bit:** e.g., $21.1250^\circ\text{C}$ (Step size $= 0.0625^\circ\text{C}$)
+
+### Resolution vs. Accuracy for Frost Decision
+- **Absolute Accuracy ($\pm 0.5^\circ\text{C}$):** Limits the reliability of absolute threshold decisions. For example, a reading of $+0.3^\circ\text{C}$ could physically be $-0.2^\circ\text{C}$.
+- **Quantization Resolution ($0.0625^\circ\text{C}$):** Does not overcome intrinsic sensor inaccuracy, but enables precise tracking of fine thermal dynamics and rate of temperature drop before reaching freezing temperatures.
+
+---
+
+## 3. Dynamic Response Time Analysis (Cold-to-Warm Water Step)
+
+The sensor probe was rapidly transitioned from cold water to warm water at 12-bit resolution to measure its thermal step response.
+
+- **Initial Steady State ($T_{\text{cold}}$):** $\approx 12.1^\circ\text{C}$
+- **Final Steady State ($T_{\text{warm}}$):** $\approx 45.3^\circ\text{C}$
+- **Total Temperature Step ($\Delta T$):** $33.2^\circ\text{C}$
+- **63.2% Response Threshold ($T_\tau$):** $12.1 + (33.2 \times 0.632) \approx 33.1^\circ\text{C}$
+- **Calculated Time Constant ($\tau$):** Derived from time elapsed to reach $T_\tau$.
+- **Settling Time ($4 \sim 5\tau$):** Time taken to reach within 95%–99% of final value ($45.3^\circ\text{C}$).
+
+### Air vs. Water Response Comparison
+Thermal response in still air is significantly slower than in stirred water. This is because water has a substantially higher thermal conductivity and volumetric heat capacity than air, resulting in a much higher convective heat transfer coefficient ($h_{\text{water}} \gg h_{\text{air}}$).
+
+---
+
+## 4. Unit-to-Unit Check & Reference Thermometer Comparison
+
+Both the DS18B20 probe and a reference thermometer were placed close together in still air and allowed to settle.
+
+- **Sample Count:** 10 consecutive readings (sampled every 3 seconds)
+- **DS18B20 Mean Reading:** $22.431^\circ\text{C}$
+- **DS18B20 Reading Spread:** $0.0625^\circ\text{C}$ ($22.3750^\circ\text{C} \sim 22.4375^\circ\text{C}$)
+- **Reference Thermometer Reading:** $21.0^\circ\text{C}$
+- **Mean Difference ($T_{\text{DS18B20}} - T_{\text{ref}}$):** $\approx +1.43^\circ\text{C}$
+
+### Decision on Offset Correction
+The DS18B20 demonstrated exceptional short-term repeatability with an extremely low noise spread ($0.0625^\circ\text{C}$). Although an average difference of $+1.43^\circ\text{C}$ was observed relative to the reference thermometer, **this difference was not applied as an offset correction**. Because the absolute accuracy of the reference thermometer itself was unverified, applying this correction risks introducing an uncalibrated systematic error.
 
 
 
