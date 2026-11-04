@@ -1,4 +1,3 @@
-<img width="1280" height="799" alt="a3075b3d98aafcfc2e634419550ab8b7" src="https://github.com/user-attachments/assets/745fbeb3-f3ff-4a0b-8111-9d2ec9448eba" />
 
 # Task 1: The LDR's Transfer Function — Resistance vs. Light
 
