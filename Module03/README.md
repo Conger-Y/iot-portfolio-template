@@ -168,3 +168,78 @@ This calibration corrected the ADC measurement chain’s conversion relationship
 **Data-quality note**
 
 The initial pairing of 0.50 V with ADC 650.50 was not confirmed by simultaneous measurements. It was replaced by the newly measured pairing of 0.53 V with ADC 525.31. The final serial-monitor screenshot was retained as evidence of the implemented calibration and validation result.
+
+
+### Task 3b: Two-Point Calibration and Validation of the LDR
+
+**Method**
+
+The original, unshielded LDR measurements were used. The 15 cm and 50 cm measurements were selected as calibration points. The 25 cm measurement was reserved for independent validation and was excluded from both fits.
+
+Supply voltage was assumed to be 3.30 V, and the fixed resistor was nominally 10 kΩ.
+
+LDR resistance was calculated using:
+
+\[
+R_{\mathrm{LDR}}=10\,\mathrm{k}\Omega
+\frac{3.30-V_{\mathrm{out}}}{V_{\mathrm{out}}}
+\]
+
+Relative illuminance was approximated from distance:
+
+\[
+E_r=\left(\frac{15}{d}\right)^2
+\]
+
+Here, \(d\) is in centimetres. This is a distance-based proxy, not a calibrated lux measurement.
+
+**Data**
+
+| Purpose | Distance | Vout | Relative illuminance proxy | LDR resistance |
+|---|---:|---:|---:|---:|
+| Calibration point 1 | 15 cm | 1.60 V | 1.000 | 10.625 kΩ |
+| Calibration point 2 | 50 cm | 1.27 V | 0.090 | 15.984 kΩ |
+| Independent validation | 25 cm | 1.36 V | 0.360 | 14.265 kΩ |
+
+**Power-law calibration**
+
+Fitting the two calibration points in logarithmic space gave:
+
+\[
+R_{\mathrm{power}}=10.625E_r^{-0.1696}
+\quad[\mathrm{k}\Omega]
+\]
+
+Thus, the fitted exponent was \(\gamma=0.1696\).
+
+**Linear calibration**
+
+A straight line through the same two calibration points gave:
+
+\[
+R_{\mathrm{linear}}=16.514-5.889E_r
+\quad[\mathrm{k}\Omega]
+\]
+
+**Third-point validation**
+
+At 25 cm, the voltage-derived resistance was 14.265 kΩ. Error is defined as predicted resistance minus voltage-derived resistance.
+
+| Model | Predicted resistance | Error | Relative error |
+|---|---:|---:|---:|
+| Power law | 12.635 kΩ | −1.630 kΩ | −11.42% |
+| Linear | 14.394 kΩ | +0.129 kΩ | +0.91% |
+
+The linear model predicted this independent validation point more closely than the power-law model.
+
+**Uncertainty statement**
+
+The validation result was approximately 14.26 kΩ. Ambient-light contamination of the illuminance estimate and illumination changes caused by positioning or shadowing were considered the two largest likely limitations; their contributions were not quantified, so no numerical expanded uncertainty is claimed.
+
+**Interpretation and calibration decision**
+
+The lamp-off output was approximately 1.30 V, close to the readings at the larger distances. Ambient daylight therefore substantially affected the measurements, and the distance-based illuminance proxy did not represent total illumination.
+
+The smaller linear-model error at one validation point does not establish that the LDR is physically linear or that the model will generalize to other conditions. Likewise, the fitted power-law exponent should not be treated as a reliable intrinsic sensor parameter.
+
+Both models were retained for comparison, but neither was accepted as a reliable lux calibration. No firmware correction was applied. Reliable light calibration would require controlled illumination or measured illuminance and a quantified uncertainty budget.
