@@ -1,4 +1,4 @@
-<img width="1792" height="1280" alt="42146eb338b89306977f803ebb65b23a" src="https://github.com/user-attachments/assets/aeedd338-2f35-479b-9842-8b23d3766b8f" />
+
 # Task 1: The LDR's Transfer Function — Resistance vs. Light
 
 ## 1. Circuit Setup & Voltage Reference
