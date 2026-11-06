@@ -243,3 +243,107 @@ The lamp-off output was approximately 1.30 V, close to the readings at the large
 The smaller linear-model error at one validation point does not establish that the LDR is physically linear or that the model will generalize to other conditions. Likewise, the fitted power-law exponent should not be treated as a reliable intrinsic sensor parameter.
 
 Both models were retained for comparison, but neither was accepted as a reliable lux calibration. No firmware correction was applied. Reliable light calibration would require controlled illumination or measured illuminance and a quantified uncertainty budget.
+
+
+
+### Task 3C:  The digital sensor (DS18B20)
+An initial ice-bath trial produced 10 readings with a mean of 8.7563°C. The bath temperature at the probe was not verified. With no ice left for a repeat trial, the 0°C validation remained incomplete. The readings were retained as preliminary data, and no offset correction was applied based on this trial.
+
+
+
+
+
+
+
+
+### Task 4: Hysteresis and repeatability — where the loop is real
+
+**LDR — light up and down**
+
+
+
+The lamp and LDR were kept fixed while a card was moved through five marked positions. Position 1 blocked the most light, and position 5 was fully unblocked. The output voltage was measured at each position while increasing and then decreasing illumination.
+
+| Position            | Increasing illumination (V) | Decreasing illumination (V) | Absolute difference (V) |
+| ------------------- | --------------------------: | --------------------------: | ----------------------: |
+| 1 — most blocked    |                       0.328 |                       0.865 |                   0.537 |
+| 2                   |                       1.433 |                       1.287 |                   0.146 |
+| 3                   |                       1.634 |                       1.278 |                   0.356 |
+| 4                   |                       1.735 |                       1.625 |                   0.110 |
+| 5 — fully unblocked |                       1.632 |                       1.623 |                   0.009 |
+
+The largest difference was **0.537 V** at position 1, the start and end of the sweep. Among the three intermediate positions, the largest difference was **0.356 V** at position 3. A separate fully unblocked reading of **1.715 V** was higher than both position 5 readings from the sweep.
+
+The first sweep showed that the readings differed between the two directions at the same marked positions. Hysteresis, response lag, and variations in card placement or ambient light could all contribute. A slower sweep with more time for the readings to settle is still pending.
+
+
+**Potentiometer — mechanical repeatability**
+
+
+**Objective**
+
+To measure how consistently a potentiometer returns to the same output voltage when its shaft is manually turned back to a marked position.
+
+**Setup and procedure**
+
+A 10 kΩ potentiometer was connected across the ESP32’s 3.3 V supply and ground. A digital multimeter in DC voltage mode measured the wiper voltage relative to ground.
+
+The potentiometer was adjusted to 1.527 V, and its shaft position was marked. Three voltage readings were taken without moving the shaft. The shaft was then turned away from the mark and returned to it ten times, approaching the mark from the same direction each time. The voltage was recorded after releasing the shaft. The mark was used to set the position for each trial.
+
+**Raw data**
+
+| Reading | Shaft held fixed (V) | Returned to the mark (V) |
+| ------: | -------------------: | -----------------------: |
+|       1 |                1.527 |                    1.559 |
+|       2 |                1.527 |                    1.509 |
+|       3 |                1.526 |                    1.439 |
+|       4 |                    — |                    1.563 |
+|       5 |                    — |                    1.506 |
+|       6 |                    — |                    1.456 |
+|       7 |                    — |                    1.528 |
+|       8 |                    — |                    1.563 |
+|       9 |                    — |                    1.538 |
+|      10 |                    — |                    1.504 |
+
+**Results**
+
+The range was calculated as the maximum reading minus the minimum reading.
+
+| Condition            | Samples | Mean voltage (V) | Minimum (V) | Maximum (V) | Range (V) |
+| -------------------- | ------: | ---------------: | ----------: | ----------: | --------: |
+| Shaft held fixed     |       3 |            1.527 |       1.526 |       1.527 |     0.001 |
+| Returned to the mark |      10 |            1.517 |       1.439 |       1.563 |     0.124 |
+
+**Discussion and conclusion**
+
+The voltage varied by only **1 mV** across the three fixed-position readings. After manual repositioning, the range increased to **124 mV**. The lowest return reading, 1.439 V, was **88 mV below** the initial marked-position reading of 1.527 V.
+
+Returning the shaft to the same visual mark produced substantially more variation than was observed with the shaft held fixed. The 124 mV range describes the repeatability of the manual repositioning procedure. The measurements do not separate the effects of visual alignment and mechanical play.
+
+
+
+**DS18B20 — repeatability and resolution**
+
+
+
+The DS18B20 was tested in room air at 12-bit resolution. Ten consecutive readings were recorded with the probe kept in the same position. The multimeter displayed 21°C during the test.
+
+| Sample | DS18B20 temperature (°C) |
+| -----: | -----------------------: |
+|      1 |                  23.7500 |
+|      2 |                  23.7500 |
+|      3 |                  23.7500 |
+|      4 |                  23.7500 |
+|      5 |                  23.6875 |
+|      6 |                  23.6875 |
+|      7 |                  23.6250 |
+|      8 |                  23.6875 |
+|      9 |                  23.6250 |
+|     10 |                  23.6250 |
+
+All ten readings were valid. The mean was **23.6938°C**, and the range was **0.1250°C** (23.7500 − 23.6250°C), equivalent to two 12-bit increments of 0.0625°C.
+
+The DS18B20 mean was approximately **2.7°C higher** than the multimeter reading. This is an observed difference between the two instruments, while the **0.1250°C range** describes the spread of the DS18B20 readings during this trial. The 9-bit trial is still pending.
+
+<img width="1280" height="1706" alt="3d09036d88dedba7acb5a78162a3f2db" src="https://github.com/user-attachments/assets/b2b50108-5848-4a9c-96f7-b800ca6a5ecb" />
+
