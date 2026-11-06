@@ -339,3 +339,5 @@ The two settings were tested in separate runs. The difference between their mean
 
 
  ### Task 5: Noise and filtering — measure the cost
+ 
+<img width="1732" height="1171" alt="dc3408e89c75ad5b9a9b611981e730c6" src="https://github.com/user-attachments/assets/b8d750e8-f6e1-4979-ab89-020bcf5eb7be" />
