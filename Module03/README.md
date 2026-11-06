@@ -325,25 +325,17 @@ Returning the shaft to the same visual mark produced substantially more variatio
 **DS18B20 — repeatability and resolution**
 
 
+The same DS18B20 probe was tested in room air at two resolution settings. Ten consecutive readings were recorded at each setting.
 
-The DS18B20 was tested in room air at 12-bit resolution. Ten consecutive readings were recorded with the probe kept in the same position. The multimeter displayed 21°C during the test.
+| Resolution | Valid readings | Reading step (°C) | Mean (°C) | Minimum (°C) | Maximum (°C) | Range (°C) |
+| ---------- | -------------: | ----------------: | --------: | -----------: | -----------: | ---------: |
+| 9 bit      |             10 |            0.5000 |   22.5000 |      22.5000 |      22.5000 |     0.0000 |
+| 12 bit     |             10 |            0.0625 |   23.6938 |      23.6250 |      23.7500 |     0.1250 |
 
-| Sample | DS18B20 temperature (°C) |
-| -----: | -----------------------: |
-|      1 |                  23.7500 |
-|      2 |                  23.7500 |
-|      3 |                  23.7500 |
-|      4 |                  23.7500 |
-|      5 |                  23.6875 |
-|      6 |                  23.6875 |
-|      7 |                  23.6250 |
-|      8 |                  23.6875 |
-|      9 |                  23.6250 |
-|     10 |                  23.6250 |
+All ten readings at 9-bit resolution were 22.5000°C. At 12-bit resolution, the readings spanned 0.1250°C, equivalent to two 12-bit increments. The coarser 9-bit setting can report the same value even when the temperature changes slightly.
 
-All ten readings were valid. The mean was **23.6938°C**, and the range was **0.1250°C** (23.7500 − 23.6250°C), equivalent to two 12-bit increments of 0.0625°C.
+The two settings were tested in separate runs. The difference between their mean temperatures cannot be attributed to resolution alone. This experiment measured short-term repeatability for one probe. Comparison between probes was limited by equipment availability.
 
-The DS18B20 mean was approximately **2.7°C higher** than the multimeter reading. This is an observed difference between the two instruments, while the **0.1250°C range** describes the spread of the DS18B20 readings during this trial. The 9-bit trial is still pending.
 
-<img width="1280" height="1706" alt="3d09036d88dedba7acb5a78162a3f2db" src="https://github.com/user-attachments/assets/b2b50108-5848-4a9c-96f7-b800ca6a5ecb" />
 
+ ### Task 5: Noise and filtering — measure the cost
