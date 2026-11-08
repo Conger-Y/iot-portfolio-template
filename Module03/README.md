@@ -387,3 +387,4 @@ The single-threshold alarm changed state **six times**, while the hysteresis ala
 I would choose hysteresis for the frost alarm because it drastically reduced repeated switching (chattering) near the decision boundary while preserving the exact same activation threshold in this test.
  
 
+ ### Task 6 (Stretcher): Uncertainty and Declarative Filtering
