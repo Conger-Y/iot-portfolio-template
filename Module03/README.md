@@ -339,5 +339,51 @@ The two settings were tested in separate runs. The difference between their mean
 
 
  ### Task 5: Noise and filtering — measure the cost
+
+
+
+## 1. Sensor Noise and Filter Comparison
+
+To evaluate noise reduction and robustness against synthetic outliers, 500 samples were logged from the LDR ($\sim 20\text{ ms}$ sampling interval) and processed through three filters:
+- **5-sample Moving Average**
+- **5-sample Median**
+- **Exponential Moving Average (EMA, $\alpha = 0.2$)**
+
+<img width="1732" height="1221" alt="be6f5245c4534b64205f03d782f14d25" src="https://github.com/user-attachments/assets/a4a441a5-d108-4151-be3f-60291834d534" />
+
+
+### Synthetic Spike Response Analysis (Sample 470)
+A synthetic $+500$ ADC count spike was injected into the LDR dataset to simulate brief optical or electrical transients:
+- **Median Filter (5-sample):** Completely rejected the single-sample outlier ($0$ count deviation from baseline).
+- **Moving Average (5-sample):** Attenuated the spike from $+500$ to $+100$ counts, but spread the disturbance across 5 consecutive output samples.
+- **EMA ($\alpha = 0.2$):** Reduced peak impact to $+100$ counts, but introduced an exponential tail that degraded settling performance over $\sim 15\text{--}20$ samples.
+
+---
+
+## 2. Filter Lag and Response Time Trade-Off
+
+Using a manual potentiometer ramp transition crossing the midpoint threshold ($1720.5\text{ ADC counts}$), the phase lag introduced by each filter was measured relative to the raw ADC signal:
+<img width="1732" height="1171" alt="dc3408e89c75ad5b9a9b611981e730c6" src="https://github.com/user-attachments/assets/7b8b3ce4-6490-472a-9151-2dd7b8410284" />
+
+
+- **Raw ADC Crossing Time:** $\approx 4.995\text{ s}$
+- **Median (5) Crossing Time:** $\approx 5.038\text{ s}$ ($\Delta t \approx 43\text{ ms}$, $\sim 2$ samples delay)
+- **Moving Average (5) Crossing Time:** $\approx 5.042\text{ s}$ ($\Delta t \approx 47\text{ ms}$, group delay $\frac{N-1}{2} = 2$ samples)
+- **EMA ($\alpha = 0.2$) Crossing Time:** $\approx 5.080\text{ s}$ ($\Delta t \approx 85\text{ ms}$, largest phase lag)
+
+> **Trade-Off Summary:** Stronger noise smoothing comes at the direct cost of increased phase lag. A 5-sample median filter offers the best compromise by providing instantaneous outlier rejection with minimal group delay.
+
+---
+
+## 3. Threshold Decision for Frost Alarm (Hysteresis Evaluation)
+
+A simulated temperature sequence was used to compare two alarm rules as the temperature fluctuated around 2.0°C:
+- **Single-Threshold Alarm:** Switched on at or below 2.0°C and switched off above 2.0°C.
+- **Hysteresis Alarm:** Used the same activation threshold ($\le 2.0^\circ\text{C}$) but stayed on until the temperature reached $2.5^\circ\text{C}$.
+
+### Experimental Findings & Selection
+The single-threshold alarm changed state **six times**, while the hysteresis alarm changed state only **twice**. Both activated on the first reading below 2.0°C. 
+
+I would choose hysteresis for the frost alarm because it drastically reduced repeated switching (chattering) near the decision boundary while preserving the exact same activation threshold in this test.
  
-<img width="1732" height="1171" alt="dc3408e89c75ad5b9a9b611981e730c6" src="https://github.com/user-attachments/assets/b8d750e8-f6e1-4979-ab89-020bcf5eb7be" />
+
