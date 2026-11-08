@@ -388,3 +388,45 @@ I would choose hysteresis for the frost alarm because it drastically reduced rep
  
 
  ### Task 6 (Stretcher): Uncertainty and Declarative Filtering
+
+
+## 1. Voltage Measurement Uncertainty Budget
+
+The potentiometer voltage was measured with the ESP32 after two-point calibration at an independent validation point, yielding an estimated value of **$1.472\text{ V}$**. The reference multimeter read **$1.50\text{ V}$**, resulting in a validation residual of approximately **$-28\text{ mV}$**.
+
+### Uncertainty Budget Table
+
+| Contribution | Estimate | Distribution | Standard uncertainty | Source |
+| :--- | :---: | :---: | ---: | :--- |
+| **Reference Multimeter** | $\pm 10.4\text{ mV}$ | Rectangular ($a/\sqrt{3}$) | $6.0\text{ mV}$ | PCW03A 9.999V DC range accuracy limits propagated through interpolation |
+| **Short-term Repeatability** | $\pm 1.25\text{ mV}$ | Normal (SE of mean) | $0.72\text{ mV}$ | Standard error of the mean from 3 consecutive averaged ADC readings |
+| **Model Discrepancy (Fit Residual)** | $\pm 28.0\text{ mV}$ | Rectangular ($a/\sqrt{3}$) | $16.2\text{ mV}$ | Single validation point residual treated as provisional half-width $a$ |
+| **Nonlinearity / Quantization** | $< 0.8\text{ mV}$ | Rectangular ($a/\sqrt{3}$) | Negligible | ESP32 12-bit ADC quantization step ($\approx 0.8\text{ mV}$) |
+| **Drift & Self-heating** | $< 1.0\text{ mV}$ | Bounded | Negligible | Short measurement duration in stable indoor environment |
+
+### Combined and Expanded Uncertainty Calculation
+Combining the standard uncertainty contributions in quadrature:
+
+$$u_c = \sqrt{6.0^2 + 0.72^2 + 16.2^2} \approx \sqrt{36 + 0.5184 + 262.44} = 17.29\text{ mV} \approx 17\text{ mV}$$
+
+Applying a coverage factor of **$k = 2$** (for an approximate $95\%$ confidence level):
+
+$$U = k \cdot u_c = 2 \times 17.29\text{ mV} = 34.58\text{ mV} \approx 0.035\text{ V}$$
+
+**Final Reported Voltage Result:**
+$$\mathbf{V_{\text{pot}} = 1.472 \pm 0.035\text{ V} \quad (k = 2)}$$
+
+---
+
+## 2. Software Filter Performance Comparison
+
+In the relatively stable section of the LDR recording:
+- **Exponential Moving Average (EMA, $\alpha = 0.2$):** Reduced the sample standard deviation from **$5.368$ to $3.979\text{ ADC counts}$**. Its measured group delay during the potentiometer transition was approximately **$84\text{ ms}$**.
+- **5-Point Median Filter:** Added approximately **$40\text{ ms}$** of phase lag and proved to be the most effective filter for suppressing artificial single-sample impulse spikes.
+
+---
+
+## 3. Dominant Contribution & Improvement Priority
+
+- **Dominant Uncertainty Source:** The **Calibration model discrepancy ($16.2\text{ mV}$)** is by far the largest contribution to the uncertainty budget, accounting for over $85\%$ of the combined variance.
+- **Improvement Strategy:** I would first check the calibration at **more independent voltage points across the range**. This would verify whether the observed $-28\text{ mV}$ discrepancy represents a localized nonlinearity or a systematic offset bias. While additional filtering reduces short-term noise, correcting the calibration model bias is required to reduce the overall uncertainty boundary.
