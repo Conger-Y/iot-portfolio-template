@@ -428,8 +428,12 @@ In the relatively stable section of the LDR recording:
 
 
 ## Study log
-Breadboard Open Circuit due to Pin Misalignment (Task 3b):
+# 1 Breadboard Open Circuit due to Pin Misalignment (Task 3b):
 During Task 3b, the multimeter consistently failed to output readings with all probe connections plugged in. Troubleshooting confirmed that the 3.3V red jumper wire was offset by one row (inserted into an adjacent empty breadboard socket), leaving the circuit unpowered. Correcting the pin position resolved the issue immediately.
 
 Takeaway: Unresponsive measurement chains are often caused by physical wiring errors rather than faulty code or broken sensors. Always verify physical power delivery first.
 
+# 2 Ambient Light Floor in LDR Distance Sweeps (Task 4):
+In Task 4, moving the light source vertically past a specific distance resulted in minimal to no change in LDR resistance. After multiple verification runs, we concluded that ambient room light set an illuminance noise floor. Once the inverse-square decay of the test lamp fell below this threshold, ambient light dominated the sensor's reading.
+
+Insight: Unshielded LDR measurements naturally flatten out at large distances due to ambient background noise, reinforcing the necessity of dark-box shielding for accurate transfer-function characterization.
