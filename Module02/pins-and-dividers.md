@@ -1,7 +1,5 @@
 # Module 2
 
-We are going to show here notes for Task 1, 2, 3, 4, and 5 to prove
-
 ## Task 1 Basic Electronics — LED, Button, Pull-up/Pull-down
 
 Guided by AI, we learned about the characteristics of a breadboard by asking for its basic information, and followed the step-by-step instructions to connect the power supply, ESP32 microcontroller, LED, and resistor onto the breadboard, ultimately creating a working setup where the light turns on.
