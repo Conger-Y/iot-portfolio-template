@@ -140,11 +140,7 @@ A 10 kΩ potentiometer was connected between 3.3 V and GND, with its wiper conne
 The third point was excluded from the calibration fit.
 
 **Calibration equation**
-
-\[
-V_{\mathrm{cal}}=0.53+
-\frac{ADC-525.31}{3180.32-525.31}\times(2.72-0.53)
-\]
+$$V_{\mathrm{cal}} = 0.53 + \frac{\mathrm{ADC} - 525.31}{3180.32 - 525.31} \times (2.72 - 0.53)$$
 
 **Validation results**
 
