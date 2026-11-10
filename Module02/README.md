@@ -256,3 +256,23 @@ Initially, we hypothesized an inverse relationship between light intensity and t
 
 ---
 
+
+
+
+
+
+
+
+
+
+
+<img width="1280" height="800" alt="0e9ce468300ff6462e156a4fc02d0c00" src="https://github.com/user-attachments/assets/2c3bbbed-cb50-4212-9634-f9d3534b3b49" />** Task 1: Simple pins, PWM, UART, and a voltage divider
+
+
+ Task 9
+
+我们通过 candidate： hepter/web-logic-analyzer 成功将图形显示出来
+ <img width="2049" height="1280" alt="a55c5f8cf0187de61daf92e4053af284" src="https://github.com/user-attachments/assets/95a85e80-a0db-4131-bc37-97670243196f" />
+原先一直困扰我们为什么blick用杜邦线接到eps32后blick板不亮，后面发现在面包板上3v3和D19用一根杜邦线连着导致blick短路，当这根线被撤掉，图像成功显示
+
+
