@@ -427,5 +427,9 @@ In the relatively stable section of the LDR recording:
 
 
 
+## Study log
+Breadboard Open Circuit due to Pin Misalignment (Task 3b):
+During Task 3b, the multimeter consistently failed to output readings with all probe connections plugged in. Troubleshooting confirmed that the 3.3V red jumper wire was offset by one row (inserted into an adjacent empty breadboard socket), leaving the circuit unpowered. Correcting the pin position resolved the issue immediately.
 
+Takeaway: Unresponsive measurement chains are often caused by physical wiring errors rather than faulty code or broken sensors. Always verify physical power delivery first.
 
