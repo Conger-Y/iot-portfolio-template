@@ -430,3 +430,11 @@ In the relatively stable section of the LDR recording:
 
 - **Dominant Uncertainty Source:** The **Calibration model discrepancy ($16.2\text{ mV}$)** is by far the largest contribution to the uncertainty budget, accounting for over $85\%$ of the combined variance.
 - **Improvement Strategy:** I would first check the calibration at **more independent voltage points across the range**. This would verify whether the observed $-28\text{ mV}$ discrepancy represents a localized nonlinearity or a systematic offset bias. While additional filtering reduces short-term noise, correcting the calibration model bias is required to reduce the overall uncertainty boundary.
+
+
+
+
+
+
+
+
