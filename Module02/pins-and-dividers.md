@@ -250,7 +250,6 @@ $$R_{LDR} = 10,000\ \Omega \cdot \frac{3.300\text{ V} - 0.988\text{ V}}{0.988\te
 https://github.com/user-attachments/assets/b7737f9d-c485-45a4-8086-59e24560644d
 
 ## Reflection 4
-Initially, we hypothesized an inverse relationship between light intensity and the ADC value—meaning the brighter the light, the lower the ADC reading. When we uncovered the photoresistor and observed an instantaneous drop in the ADC value, our hypothesis was confirmed
 
 
 
@@ -259,7 +258,7 @@ Initially, we hypothesized an inverse relationship between light intensity and t
 
 
 
-Task 5
+## Task 5：Wire the Bus and Scan It
  
  已经通过找到I²C地址
  <img width="2049" height="1280" alt="1b1839e628146707adc860389781dbc3" src="https://github.com/user-attachments/assets/4665ac84-e277-4892-85a4-0f31b9183414" />
@@ -269,7 +268,7 @@ Software Configuration and Execution: The I²C scanner program sketch_oct30a.ino
 
 Test Results: After uploading the code, the Serial Monitor was opened. The system successfully printed the startup message and began scanning the I²C bus. The scan results indicated that one I²C device was successfully detected at the address 0x4F. This confirms that the hardware wiring is correct and the ESP32 is able to successfully communicate with the sensor via the I²C protocol.
 
-Task 6
+## Task 6: Read Through the Library, Then Read the Register
 Register
 <img width="1280" height="800" alt="d9ffb1252003348cba3e53a42e9509d0" src="https://github.com/user-attachments/assets/b92d0430-e85a-4e0a-b009-edd2e5593da7" />
 
@@ -287,7 +286,7 @@ Comparing the "temperature value calculated by manually parsing the register's r
 Conclusion: This proves that my understanding of this I²C sensor's data type, byte order, and scaling ratio is completely correct.
 
 
-Task 7
+## Task 7 : Two Devices on One Bus
 
 
 <img width="1280" height="800" alt="ae3e69ed8e2ddc04dec56448c1f0b7b1" src="https://github.com/user-attachments/assets/475ad011-a635-44ca-b0a1-39a60b6aef29" />
@@ -309,10 +308,19 @@ Operation and Observation: An AI-written comprehensive Arduino sketch was execut
 <img width="1280" height="800" alt="0e9ce468300ff6462e156a4fc02d0c00" src="https://github.com/user-attachments/assets/2c3bbbed-cb50-4212-9634-f9d3534b3b49" />** Task 1: Simple pins, PWM, UART, and a voltage divider
 
 
- Task 9
+## Task 9 : Build and Choose Our Scope — instrument sprint
 
 我们通过 candidate： hepter/web-logic-analyzer 成功将图形显示出来
  <img width="2049" height="1280" alt="a55c5f8cf0187de61daf92e4053af284" src="https://github.com/user-attachments/assets/95a85e80-a0db-4131-bc37-97670243196f" />
-原先一直困扰我们为什么blick用杜邦线接到eps32后blick板不亮，后面发现在面包板上3v3和D19用一根杜邦线连着导致blick短路，当这根线被撤掉，图像成功显示
 
+
+
+## Study Log:
+
+### Reflection 4: Photoresistor Transfer Characteristic (Task 4)
+* **Hypothesis & Physical Verification:** Initially, we hypothesized an inverse relationship between light intensity and the raw ADC value—expecting that brighter light would result in a lower ADC reading. When we uncovered the photoresistor and observed an instantaneous drop in the ADC voltage/code, our initial hypothesis regarding the circuit's transfer function was successfully confirmed.
+
+### Reflection 9: Hardware Short-Circuit & Logic Analyzer Debugging (Task 9)
+* **Symptom & Root Cause:** During the Task 9 setup, we were initially stuck on why the logic analyzer board (Blick) failed to power on after connecting jumper wires to the ESP32. Upon physical inspection, we discovered an unintended jumper connection on the breadboard between the 3V3 supply rail and pin D19, which caused a direct power supply short circuit.
+* **Resolution & Outcome:** Once the short-circuiting wire was removed, the Blick board powered up immediately, and the digital logic waveforms were successfully captured and displayed on the web analyzer UI.
 
