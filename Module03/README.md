@@ -176,16 +176,11 @@ Supply voltage was assumed to be 3.30 V, and the fixed resistor was nominally 10
 
 LDR resistance was calculated using:
 
-\[
-R_{\mathrm{LDR}}=10\,\mathrm{k}\Omega
-\frac{3.30-V_{\mathrm{out}}}{V_{\mathrm{out}}}
-\]
+$$R_{\mathrm{LDR}} = 10\,\mathrm{k}\Omega \cdot \frac{3.30 - V_{\mathrm{out}}}{V_{\mathrm{out}}}$$
 
 Relative illuminance was approximated from distance:
 
-\[
-E_r=\left(\frac{15}{d}\right)^2
-\]
+$$E_r = \left(\frac{15}{d}\right)^2$$
 
 Here, \(d\) is in centimetres. This is a distance-based proxy, not a calibrated lux measurement.
 
