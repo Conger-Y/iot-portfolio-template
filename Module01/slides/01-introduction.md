@@ -243,7 +243,6 @@ $$R_{LDR} = 10,000\ \Omega \cdot \frac{3.300\text{ V} - 0.988\text{ V}}{0.988\te
 <img width="2042" height="1280" alt="61eb48b7461ab16fecbb3332a0be6ccb" src="https://github.com/user-attachments/assets/785754f6-bdf0-4b75-9673-3d29b14d7894" />
 
 
-<img width="2049" height="1280" alt="75209fbf0742c4185fd85fb8dd73dba3" src="https://github.com/user-attachments/assets/2c0d0eeb-d96a-40cf-9f43-8f85b50ac99d" />
 
 
 
