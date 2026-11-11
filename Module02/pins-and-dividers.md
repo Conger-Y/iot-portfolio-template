@@ -64,8 +64,7 @@ Operation and Observation: An AI-written comprehensive Arduino sketch was execut
 
 ## Study Log:
 
-### Reflection 4: Photoresistor Transfer Characteristic (Task 4)
-* **Hypothesis & Physical Verification:** Initially, we hypothesized an inverse relationship between light intensity and the raw ADC value—expecting that brighter light would result in a lower ADC reading. When we uncovered the photoresistor and observed an instantaneous drop in the ADC voltage/code, our initial hypothesis regarding the circuit's transfer function was successfully confirmed.
+
 
 ### Reflection 9: Hardware Short-Circuit & Logic Analyzer Debugging (Task 9)
 * **Symptom & Root Cause:** During the Task 9 setup, we were initially stuck on why the logic analyzer board (Blick) failed to power on after connecting jumper wires to the ESP32. Upon physical inspection, we discovered an unintended jumper connection on the breadboard between the 3V3 supply rail and pin D19, which caused a direct power supply short circuit.
