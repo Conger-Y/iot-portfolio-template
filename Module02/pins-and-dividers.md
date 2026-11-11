@@ -7,7 +7,7 @@
 
 ## Task 5：Wire the Bus and Scan It
  
- 已经通过找到I²C地址
+
  <img width="2049" height="1280" alt="1b1839e628146707adc860389781dbc3" src="https://github.com/user-attachments/assets/4665ac84-e277-4892-85a4-0f31b9183414" />
 Hardware Connection: The I²C sensor is connected to the ESP32 development board using jumper wires. The 5V and GND pins of the sensor are connected to the 3V3 and GND pins of the ESP32, respectively, to provide power supply. The SCL and SDA pins of the sensor are connected to the GPIO 22 and GPIO 21 pins of the ESP32, respectively, establishing the I²C data communication channel. All hardware components are mounted on a breadboard.
 
