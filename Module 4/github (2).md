@@ -1,0 +1,111 @@
+# Module 4 – Liquid Level Measurement: Freshwater, Seawater & Diesel Tank Analysis
+
+<img width="1280" height="1706" alt="aec9b1edacb80062622853c64adb15bc" src="https://github.com/user-attachments/assets/4b8b4100-4f5e-44a6-9d75-900e3cc77ad5" />
+
+
+## Overview
+This repository documents the experimental evaluation, calibration, and comparative analysis of low-cost liquid level sensing technologies (**Resistive Needle Probe HD-38 / HW-038** vs. **Ultrasonic Distance Sensor HC-SR04 / JSN-SR04T**) across three different fluid mediums: **Freshwater**, **Seawater**, and **Diesel Fuel**. 
+
+The goal is to assess sensor linearity, signal drift, repeatability, environmental interference (sloshing/rocking), and medium compatibility for maritime and industrial tank monitoring applications.
+
+---
+
+## 1. Freshwater Tank (Resistive Needle Probe – HD-38)
+
+### 1.1 Hardware Setup & Calibration Model
+- **Sensor**: Resistive needle probe (`HD-38` module)
+  - Analog Output (`AO`) $\rightarrow$ `GPIO34`
+  - Digital Output (`DO`) $\rightarrow$ `GPIO19`
+- **Power Management**: Powered via `GPIO25` strictly during measurement intervals to minimize electrolysis and electrode corrosion.
+- **Reference Baseline**: Needle tips touch the bottom of the container (`0%` level).
+- **Calibration Models**:
+  $$\text{ADC} = A + \frac{B}{\text{level pct}}$$
+  - **2-Point Model** (calibrated at `100%` and `50%`): $A_2 = 119.0, B_2 = 4400.0$
+  - **4-Point Fit** (calibrated at `100%`, `75%`, `50%`, `25%`): $A_4 = 131.8, B_4 = 3345.0$
+
+### 1.2 Experimental Observations & Results
+
+| Experiment Phase | Key Metric / Observation | Quantitative Result |
+| :--- | :--- | :--- |
+| **1. Slow Pouring** | Non-linear ADC drop & Digital (`DO`) threshold trigger | Dry `~4095` $\rightarrow$ Wet `~150–250`; `DO` flips `0` $\rightarrow$ `1` cleanly upon contact |
+| **2. Settling & Drift** | Continuous downward drift at constant `100%` water level | Starts at **`711`**, settles at **`238`** (**`67%` total drop**) |
+| **3. Repeatability** | Full $\rightarrow$ Empty $\rightarrow$ Full cycle stability | 1st Full: **`161 ± 2.7`** vs. 2nd Full: **`163 ± 2.0`** (~1.2% variance) |
+| **4. Sloshing / Agitation** | Surface wave disturbance at the end of pouring | Significant spread between `adc_min` and `adc_max` |
+
+#### Visual Results – Freshwater Calibration & Drift
+<img width="782" height="507" alt="output" src="https://github.com/user-attachments/assets/98d33415-753e-41dc-bc03-387e070deb36" />
+
+*Figure 1: Non-linear calibration curve (2-point vs. 4-point fit) and 67% downward signal drift under constant 100% submersion due to electrode polarization.*
+
+<img width="849" height="468" alt="output1" src="https://github.com/user-attachments/assets/b1aba86d-cb49-454b-81a0-b58630701f09" />
+
+*Figure 2: Full $\rightarrow$ Empty $\rightarrow$ Full repeatability cycle showing clean dry baseline recovery (`ADC > 2800`, peaking at `4095`).*
+
+---
+
+## 2. Seawater & Diesel Tank Analysis
+
+### 2.1 Seawater Conductivity Effects (Resistive Probe)
+- **Higher Ionic Conductivity**: Dissolved salts drastically lower fluid resistance compared to freshwater, pushing the resistive probe rapidly toward saturation (`ADC` drops steeper even at minimal submersion).
+- **Accelerated Electrolysis**: Even with pulsed power (`GPIO25`), saltwater accelerates oxidation on exposed copper/nickel traces, degrading long-term baseline accuracy.
+
+### 2.2 Diesel Tank Experiment (`Module04_Diesel_Tank`)
+Because diesel is a **non-conductive hydrocarbon**, resistive probes (`HW-038` / `HD-38`) cannot conduct current through the fluid and are incompatible with fuel level sensing. Consequently, non-contact **Ultrasonic Sensing** (implemented on `ESP32` via `code/ultrasonic_reference_ESP32.ino`) was evaluated using two configurations:
+1. **Direct Ultrasonic Reflection** (measuring distance directly to the diesel surface).
+2. **Float-Assisted Ultrasonic Reflection** (measuring distance to a buoyant cork reflector floating on the diesel surface).
+
+#### Diesel Experimental Results Summary
+*(Data transcribed from `data/observed_screenshot_transcription.csv`)*
+
+| Test Condition | Sensor / Setup | Observed Distance | Notes |
+| :--- | :--- | :--- | :--- |
+| **Direct Diesel Surface (Fill A)** | Ultrasonic (`ESP32`) | `7.22 cm` | Slight echo spread due to liquid surface absorption |
+| **Cork-Top Float (Fill A – Stable)** | Ultrasonic + Float | `4.56 cm` | Solid float provides a high-reflectivity target for stable measurement |
+| **Direct Diesel Surface (Fill B)** | Ultrasonic (`ESP32`) | `2.50 cm` | Higher liquid level reduces sensor-to-surface distance |
+| **Cork-Top Float (Fill B – Unstable)** | Ultrasonic + Float | `6.63 cm` (wide spread) | Unrestricted float tilted/stuck against tank wall after refilling |
+| **Simulated Rocking** | `simulate_rocking.py` | Periodic oscillation | Wave tilt deflects direct echoes; guided float dampens variance |
+
+#### Visual Results – Diesel Tank & Rocking Simulation
+
+<img width="1506" height="818" alt="01_observed_distance_captures" src="https://github.com/user-attachments/assets/23ab540c-2a06-4d92-b5e4-411241e9e2c0" />
+
+*Figure 3: Comparison of ultrasonic distance readings directly off the diesel surface vs. using a floating target across two filling cycles.*
+
+<img width="1682" height="786" alt="03_simulated_rocking_time_series" src="https://github.com/user-attachments/assets/d51da01a-0dd8-4564-8b2a-93fdfa11d5f1" />
+
+*Figure 4: Simulated tank rocking (`data/simulated_shaking_illustrative_only.csv`) illustrating measurement noise and echo variance under dynamic motion.*
+
+---
+
+## 3. Comparative Sensor Selection Matrix
+
+| Criterion | Resistive Probe (`HD-38` / `HW-038`) | Ultrasonic Sensor (`ESP32` Reference) |
+| :--- | :--- | :--- |
+| **Freshwater** | Works (non-linear; requires calibration & settling time) | **Recommended** (linear, no drift, non-contact) |
+| **Seawater** | Poor long-term reliability (rapid saturation & corrosion) | **Recommended** (immune to salinity/conductivity) |
+| **Diesel / Fuel** | **Incompatible** (non-conductive fluid) | **Recommended** (especially with a guided float reflector) |
+| **Signal Drift** | High (`67%` drift observed in constant freshwater test) | Negligible (temperature-dependent only) |
+| **Sloshing / Rocking** | High sensitivity (`adc_min`/`adc_max` spikes) | Moderate (mitigated via moving average & stilling well) |
+
+---
+
+## 4. Industrial & Maritime Application Context
+In real-world **maritime vessel fuel/ballast monitoring** and **industrial fluid storage** (such as bulk diesel backup tanks and process water reservoirs in **North Rhine-Westphalia, Germany**):
+- **Resistive probes** are strictly limited to simple binary high/low leak detection in conductive water systems.
+- **Non-contact ultrasonic or guided-wave radar sensors** housed inside a **perforated stilling pipe (baffle tube)** are the industry standard—eliminating fluid conductivity dependencies, preventing electrode corrosion, and mechanically damping sloshing waves during vessel motion or pump refilling.
+
+---
+
+## Repository Structure
+```text
+├── README.md
+├── assets/                                   # Experiment plots & hardware photos
+├── code/
+│   └── ultrasonic_reference_ESP32.ino        # ESP32 ultrasonic distance measurement firmware
+├── data/
+│   ├── observed_screenshot_transcription.csv # Transcribed diesel test measurements
+│   ├── simulate_rocking.py                   # Tank sloshing/rocking simulation script
+│   └── simulated_shaking_illustrative_only.csv
+└── notebooks/
+    └── Module_4_Freshwater_Analysis.ipynb    # Freshwater calibration & drift analysis
+```
