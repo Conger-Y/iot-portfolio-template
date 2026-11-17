@@ -1,6 +1,7 @@
 # Module 4 – Liquid Level Measurement: Freshwater, Seawater & Diesel Tank Analysis
 
-![Project Banner](assets/hardware_setup_overview.jpg)
+<img width="1280" height="1706" alt="aec9b1edacb80062622853c64adb15bc" src="https://github.com/user-attachments/assets/4b8b4100-4f5e-44a6-9d75-900e3cc77ad5" />
+
 
 ## Overview
 This repository documents the experimental evaluation, calibration, and comparative analysis of low-cost liquid level sensing technologies (**Resistive Needle Probe HD-38 / HW-038** vs. **Ultrasonic Distance Sensor HC-SR04 / JSN-SR04T**) across three different fluid mediums: **Freshwater**, **Seawater**, and **Diesel Fuel**. 
@@ -31,10 +32,12 @@ The goal is to assess sensor linearity, signal drift, repeatability, environment
 | **4. Sloshing / Agitation** | Surface wave disturbance at the end of pouring | Significant spread between `adc_min` and `adc_max` |
 
 #### Visual Results – Freshwater Calibration & Drift
-![Freshwater Calibration and Drift](assets/freshwater_calibration_drift.png)
+<img width="782" height="507" alt="output" src="https://github.com/user-attachments/assets/98d33415-753e-41dc-bc03-387e070deb36" />
+
 *Figure 1: Non-linear calibration curve (2-point vs. 4-point fit) and 67% downward signal drift under constant 100% submersion due to electrode polarization.*
 
-![Freshwater Repeatability](assets/freshwater_repeatability_cycle.png)
+<img width="849" height="468" alt="output1" src="https://github.com/user-attachments/assets/b1aba86d-cb49-454b-81a0-b58630701f09" />
+
 *Figure 2: Full $\rightarrow$ Empty $\rightarrow$ Full repeatability cycle showing clean dry baseline recovery (`ADC > 2800`, peaking at `4095`).*
 
 ---
@@ -61,13 +64,15 @@ Because diesel is a **non-conductive hydrocarbon**, resistive probes (`HW-038` /
 | **Simulated Rocking** | `simulate_rocking.py` | Periodic distance oscillation | Wave tilt deflects direct echoes; float stabilizes acoustic return |
 
 #### Visual Results – Diesel Tank & Rocking Simulation
-![HW038 Diesel Serial Log](assets/HW038_probe_diesel_log.png)
+![HW038 Diesel Serial Log](assets/02_HW038_serial_log.png)
 *Figure 3: Serial output confirming that the resistive `HW-038` probe remains unresponsive (`~4095`) when submerged in non-conductive diesel.*
 
-![Ultrasonic Direct vs Float](assets/ultrasonic_direct_vs_float.png)
+<img width="1506" height="818" alt="01_observed_distance_captures" src="https://github.com/user-attachments/assets/23ab540c-2a06-4d92-b5e4-411241e9e2c0" />
+
 *Figure 4: Comparison of ultrasonic distance readings directly off the diesel surface vs. using a floating target across two filling cycles.*
 
-![Simulated Rocking Slosh](assets/simulated_rocking_curve.png)
+<img width="1682" height="786" alt="03_simulated_rocking_time_series" src="https://github.com/user-attachments/assets/d51da01a-0dd8-4564-8b2a-93fdfa11d5f1" />
+
 *Figure 5: Simulated tank rocking (`data/simulated_shaking_illustrative_only.csv`) illustrating measurement noise and echo variance under dynamic motion.*
 
 ---
