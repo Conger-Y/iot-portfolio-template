@@ -18,7 +18,7 @@ The goal is to assess sensor linearity, signal drift, repeatability, environment
   - Digital Output (`DO`) $\rightarrow$ `GPIO19`
 - **Power Management**: Powered via `GPIO25` strictly during measurement intervals to minimize electrolysis and electrode corrosion.
 - **Reference Baseline**: Needle tips touch the bottom of the container (`0%` level).
-- **Calibration Models** ($\text{ADC} = A + \frac{B}{\text{level\_pct}}$):
+- **Calibration Models** ($\text{ADC} = A + \frac{B}{\text{level_pct}}$):
   - **2-Point Model** (calibrated at `100%` and `50%`): $A_2 = 119.0$, $B_2 = 4400.0$
   - **4-Point Fit** (calibrated at `100%`, `75%`, `50%`, `25%`): $A_4 = 131.8$, $B_4 = 3345.0$
 
