@@ -64,16 +64,15 @@ Because diesel is a **non-conductive hydrocarbon**, resistive probes (`HW-038` /
 | **Simulated Rocking** | `simulate_rocking.py` | Periodic distance oscillation | Wave tilt deflects direct echoes; float stabilizes acoustic return |
 
 #### Visual Results – Diesel Tank & Rocking Simulation
-![HW038 Diesel Serial Log](assets/02_HW038_serial_log.png)
-*Figure 3: Serial output confirming that the resistive `HW-038` probe remains unresponsive (`~4095`) when submerged in non-conductive diesel.*
+
 
 <img width="1506" height="818" alt="01_observed_distance_captures" src="https://github.com/user-attachments/assets/23ab540c-2a06-4d92-b5e4-411241e9e2c0" />
 
-*Figure 4: Comparison of ultrasonic distance readings directly off the diesel surface vs. using a floating target across two filling cycles.*
+*Figure 3: Comparison of ultrasonic distance readings directly off the diesel surface vs. using a floating target across two filling cycles.*
 
 <img width="1682" height="786" alt="03_simulated_rocking_time_series" src="https://github.com/user-attachments/assets/d51da01a-0dd8-4564-8b2a-93fdfa11d5f1" />
 
-*Figure 5: Simulated tank rocking (`data/simulated_shaking_illustrative_only.csv`) illustrating measurement noise and echo variance under dynamic motion.*
+*Figure 4: Simulated tank rocking (`data/simulated_shaking_illustrative_only.csv`) illustrating measurement noise and echo variance under dynamic motion.*
 
 ---
 
