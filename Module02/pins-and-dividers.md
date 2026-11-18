@@ -1,6 +1,19 @@
 # Module 2
 
+## 🎯 Learning Goals
 
+Through hands-on I²C bus wiring, low-level register parsing, multi-device bus sharing, and logic analyzer debugging across Tasks 5–7 and Task 9 on the ESP32, this module achieves the following learning outcomes:
+
+1. **I²C Bus Wiring & Address Scanning (Task 5):** Configure the ESP32 I²C hardware interface (`SDA = GPIO 21`, `SCL = GPIO 22`) on a breadboard, initialize serial diagnostics (`115200` baud), and execute an I²C bus scanner to verify physical connections and discover slave device addresses (`0x4F`).
+2. **Low-Level Register Parsing vs. High-Level Libraries (Task 6):**
+   * Communicate directly with the LM75 temperature sensor (`0x4F`) using the native Arduino `Wire` library to read raw bytes from pointer register `0x00`, manually handling byte order and scaling factors.
+   * Cross-validate manual register calculations ($22.969\ ^\circ\text{C}$) against a dedicated LM75 library (`Temp0.getTemperature()`, $22.516\ ^\circ\text{C}$) and confirm dynamic sensor response ($22.516\ ^\circ\text{C} \rightarrow 26.266\ ^\circ\text{C}$) through physical heat application.
+3. **Multi-Device Bus Sharing & Master-Slave Addressing (Task 7):**
+   * Wire multiple I²C slave devices—the LM75 sensor (`0x4F`) and an I²C LCD display (`0x27`)—in parallel onto the same shared `SDA` and `SCL` lines without using extra GPIO pins.
+   * Apply Master-Slave addressing principles to read real-time temperature data from one slave and display it on another slave across a single shared bus without data collisions.
+4. **Digital Waveform Capture & Hardware Fault Debugging (Task 9):**
+   * Deploy and operate a web-based logic analyzer (`hepter/web-logic-analyzer`) to inspect digital bus signals alongside basic pin, PWM, UART, and voltage-divider behavior.
+   * Systematically diagnose and resolve breadboard power-distribution faults by identifying and clearing a `3V3`-to-`D19` short circuit that prevented the logic analyzer board from powering up.
 
 
 
