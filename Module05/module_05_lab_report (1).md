@@ -36,6 +36,15 @@ Pulse-width modulation (PWM) switches the GPIO output rapidly between $0\text{ V
   * **Common cathode (`-`)** $\rightarrow$ `GND`
 * **Firmware (`src/main.cpp`):** Reads newline-terminated ASCII commands (`R G B`) at `115200` baud, validates field count (`sscanf` returning `3` integers with no trailing characters) and buffer length (`64` bytes max), clamps values to `0`–`255` via `constrain()`, applies PWM duty cycles via `analogWrite()`, and echoes the applied RGB tuple or prints an error message on malformed input.
 * **Functional & Serial Validation:**
+  
+
+
+https://github.com/user-attachments/assets/75f189c8-21aa-4c46-b497-48240b801f66
+
+
+
+<img width="2065" height="1280" alt="4d50b694f6729c049802195ec928b1ec" src="https://github.com/user-attachments/assets/ffb5cb38-bf41-4a6c-aa4d-552259a47604" />
+
   * **Valid color inputs:** Verified primary colors (`255 0 0` echoing `Applied RGB: 255 0 0` for red, `0 255 0` for green, `0 0 255` for blue) as well as additive color mixing on the RGB module.
   * **Invalid input handling:** Verified that non-numeric or malformed strings such as `abc` are rejected without altering the LED state, returning `ERROR: Enter three integers, e.g. 255 0 0` over Serial.
 
@@ -47,6 +56,8 @@ Each color channel was driven individually at full duty cycle (`PWM = 255`), and
 | **Red** | $150\ \Omega$ | $1.07\text{ V}$ | **$7.13\text{ mA}$** |
 | **Green** | $150\ \Omega$ | $0.63\text{ V}$ | **$4.20\text{ mA}$** |
 | **Blue** | $150\ \Omega$ | $0.50\text{ V}$ | **$3.33\text{ mA}$** |
+<img width="1280" height="2275" alt="822c05fa6a0811fa4690c0dfd2cdb64e" src="https://github.com/user-attachments/assets/5bb3cfde-098a-4287-bb4d-829b6cc7e3af" />
+<img width="2400" height="1080" alt="ab6b3099ef6a2288e6ca4466eea5e4c5" src="https://github.com/user-attachments/assets/2101c879-a908-4997-9a51-5aabf847920b" />
 
 ### Analysis of Channel Imbalance
 Although all three channels use identical $150\ \Omega$ resistors on a $3.3\text{ V}$ GPIO rail, the red channel draws more than twice the current of the blue channel. Because an LED clamps its forward voltage ($V_f \approx 1.9\text{ V}$ for red, $\approx 2.1\text{ V}$ for green, and $\approx 2.8\text{ V}$ to $3.2\text{ V}$ for blue), the remaining voltage dropped across the series resistor ($U_R = V_{\text{GPIO}} - V_f$) is largest for red and smallest for blue, directly explaining the measured current difference.
@@ -65,9 +76,13 @@ The serial REPL (`115200` baud) accepted commands in the format `index R G B` (`
 * Sending `0 255 0 0` illuminated pixel `0` in red (`OK: LED 0 = 255 0 0`), and `clear` turned all eight pixels off.
 * Successive commands updated individual pixels while retaining colors already assigned to other pixels, allowing all eight pixels to be set uniformly (`0 255 0 0` through `7 255 0 0` for all-red; `0 255 255 255` through `7 255 255 255` for all-white) or in multi-color patterns.
 * Out-of-range indices (e.g., `9 255 255 255`) and malformed strings were rejected with descriptive error messages.
+<img width="1024" height="1820" alt="640296a53d383575c97c5c7c07273b7b" src="https://github.com/user-attachments/assets/75d128a5-f5bb-469e-b46c-f0028332e94d" />
 
 ### Current Measurement (8-Pixel Strip)
 We connected the UNI-T UT131C multimeter in series with the strip's positive $5\text{ V}$ supply line on its **DC `10 A`** range and measured current at luminance `80 / 255` (power estimated assuming $V_{\text{supply}} = 5\text{ V}$):
+<img width="1280" height="2275" alt="2c476fe8992c46ff4d2b2764aa213eee" src="https://github.com/user-attachments/assets/91db4c84-9507-4128-b107-ae81962e372f" />
+<img width="1280" height="2275" alt="cb9f911e80154b0d17be970d44c66367" src="https://github.com/user-attachments/assets/86d8091f-36a3-42fd-ae23-9765645fe65b" />
+
 
 | Condition | Luminance Setting | Measured Strip Current | Estimated Strip Power ($5\text{ V}$) |
 | :--- | ---: | ---: | ---: |
