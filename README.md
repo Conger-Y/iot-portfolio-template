@@ -1,4 +1,4 @@
-# Personal Portfolio for the  	Sensorik / Aktorik lass <at university/school>
+# Portfolio: Sensorik & Aktorik (Sensors & Actuators)
 
 >
 Author: Conger Yang
