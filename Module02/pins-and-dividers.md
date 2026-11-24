@@ -28,7 +28,7 @@ Hardware Connection: The I²C sensor is connected to the ESP32 development board
 Software Configuration and Execution: The I²C scanner program sketch_oct30a.ino was written and uploaded via the Arduino IDE. The program initializes the serial communication (at a baud rate of 115200) and the I²C bus (specifying pins 21 and 22).
 
 Test Results: After uploading the code, the Serial Monitor was opened. The system successfully printed the startup message and began scanning the I²C bus. The scan results indicated that one I²C device was successfully detected at the address 0x4F. This confirms that the hardware wiring is correct and the ESP32 is able to successfully communicate with the sensor via the I²C protocol.
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module02)](URL)
 ## Task 6: Read Through the Library, Then Read the Register
 Register
 <img width="1280" height="800" alt="d9ffb1252003348cba3e53a42e9509d0" src="https://github.com/user-attachments/assets/b92d0430-e85a-4e0a-b009-edd2e5593da7" />
@@ -46,7 +46,7 @@ Comparison & Conclusion
 Comparing the "temperature value calculated by manually parsing the register's raw bytes (e.g., 22.969 °C)" with the "temperature value directly output using the LM75 library (e.g., 22.516 °C)", both the numerical range and the changing trend are perfectly consistent.
 Conclusion: This proves that my understanding of this I²C sensor's data type, byte order, and scaling ratio is completely correct.
 
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module02)](URL)
 ## Task 7 : Two Devices on One Bus
 
 
@@ -68,19 +68,13 @@ Operation and Observation: An AI-written comprehensive Arduino sketch was execut
 
 <img width="1280" height="800" alt="0e9ce468300ff6462e156a4fc02d0c00" src="https://github.com/user-attachments/assets/2c3bbbed-cb50-4212-9634-f9d3534b3b49" />** Task 1: Simple pins, PWM, UART, and a voltage divider
 
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module02)](URL)
 ## Task 9 : Build and Choose Our Scope — instrument sprint
 
 我们通过 candidate： hepter/web-logic-analyzer 成功将图形显示出来
  <img width="2049" height="1280" alt="a55c5f8cf0187de61daf92e4053af284" src="https://github.com/user-attachments/assets/95a85e80-a0db-4131-bc37-97670243196f" />
 
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module02)](URL)
 
 
-## Study Log:
-
-
-
-### Reflection 9: Hardware Short-Circuit & Logic Analyzer Debugging (Task 9)
-* **Symptom & Root Cause:** During the Task 9 setup, we were initially stuck on why the logic analyzer board (Blick) failed to power on after connecting jumper wires to the ESP32. Upon physical inspection, we discovered an unintended jumper connection on the breadboard between the 3V3 supply rail and pin D19, which caused a direct power supply short circuit.
-* **Resolution & Outcome:** Once the short-circuiting wire was removed, the Blick board powered up immediately, and the digital logic waveforms were successfully captured and displayed on the web analyzer UI.
 
