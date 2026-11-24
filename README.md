@@ -4,7 +4,7 @@
 Author: Conger Yang| Bachlor / Digital Technologie 
 [[Link to GitHub]](https://github.com/Conger-Y/) • congeryang3769@gmail.com
 
-My partner is Sihan Liu , [[[portfolio link](https://github.com/partner/iot-portfolio)](https://github.com/liusihan54/iot-portfolio-templateSihan/blob/main/README.md)](https://github.com/liusihan54/iot-portfolio-templateSihan/blob/main/README.md)
+My partner is Sihan Liu , [[[portfolio link](https://github.com/liusihan54/iot-portfolio-templateSihan/blob/main/README.md)](https://github.com/liusihan54/iot-portfolio-templateSihan/blob/main/README.md)
 
 In my team for the final project, I also had the following members:
 - <replace these pointy brackets with their full name>, [portfolio link](https://github.com/partner/iot-portfolio)
