@@ -75,7 +75,7 @@ $$\log(R_{\text{LDR}}) = -\gamma \cdot \log(E_r) + C$$
 Although the linear
 
 <img width="1792" height="1280" alt="42146eb338b89306977f803ebb65b23a" src="https://github.com/user-attachments/assets/2d4bbfc1-1b00-4c01-849e-fd43ac720179" />
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module03)](URL)
 
 
 
@@ -141,7 +141,7 @@ Both the DS18B20 probe and a reference thermometer were placed close together in
 ### Decision on Offset Correction
 The DS18B20 demonstrated exceptional short-term repeatability with an extremely low noise spread ($0.0625^\circ\text{C}$). Although an average difference of $+1.43^\circ\text{C}$ was observed relative to the reference thermometer, **this difference was not applied as an offset correction**. Because the absolute accuracy of the reference thermometer itself was unverified, applying this correction risks introducing an uncalibrated systematic error.
 
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module03)](URL)
 
 
 
@@ -265,7 +265,7 @@ An initial ice-bath trial produced 10 readings with a mean of 8.7563°C. The bat
 
 
 
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module03)](URL)
 
 
 
@@ -351,7 +351,7 @@ All ten readings at 9-bit resolution were 22.5000°C. At 12-bit resolution, the 
 The two settings were tested in separate runs. The difference between their mean temperatures cannot be attributed to resolution alone. This experiment measured short-term repeatability for one probe. Comparison between probes was limited by equipment availability.
 
 
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module03)](URL)
  ### Task 5: Noise and filtering — measure the cost
 
 
@@ -446,17 +446,10 @@ In the relatively stable section of the LDR recording:
 - **Improvement Strategy:** I would first check the calibration at **more independent voltage points across the range**. This would verify whether the observed $-28\text{ mV}$ discrepancy represents a localized nonlinearity or a systematic offset bias. While additional filtering reduces short-term noise, correcting the calibration model bias is required to reduce the overall uncertainty boundary.
 
 
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module03)](URL)
 
 
 
 
-## Study log
-# 1 Breadboard Open Circuit due to Pin Misalignment (Task 3b):
-During Task 3b, the multimeter consistently failed to output readings with all probe connections plugged in. Troubleshooting confirmed that the 3.3V red jumper wire was offset by one row (inserted into an adjacent empty breadboard socket), leaving the circuit unpowered. Correcting the pin position resolved the issue immediately.
-
-Takeaway: Unresponsive measurement chains are often caused by physical wiring errors rather than faulty code or broken sensors. Always verify physical power delivery first.
-
-# 2 Ambient Light Floor in LDR Distance Sweeps (Task 4):
-In Task 4, moving the light source vertically past a specific distance resulted in minimal to no change in LDR resistance. After multiple verification runs, we concluded that ambient room light set an illuminance noise floor. Once the inverse-square decay of the test lamp fell below this threshold, ambient light dominated the sensor's reading.
 
 Insight: Unshielded LDR measurements naturally flatten out at large distances due to ambient background noise, reinforcing the necessity of dark-box shielding for accurate transfer-function characterization.
