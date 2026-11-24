@@ -37,8 +37,6 @@ Then, following the AI's prompts, we installed a push button on the breadboard a
 
 
 #### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module01)](URL)
-## Reflection 2
-At the beginning of this task, my partner and I couldn't figure out how to properly connect the ESP32 to the computer. It wasn't until we received guidance from our professor and downloaded the necessary plugins that we finally got it running successfully
 
 
 
