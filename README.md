@@ -17,14 +17,10 @@ My personal profile and expectations, you can find [here](Module01/README.md#tas
 ## Table of Contents
 
 - [Module 1 – Foundations: Electronics, Arduino & Measurement](Module01/slides/01-introduction.md), [Reflection 1](Reflections/ref01.md)
-- [Module 2 – Buses & I²C: From Simple Pins to One Bus, Many Devices](Module02/README.md),
-  [Reflection 2](Reflections/ref02.md), [Reflection 3](Reflections/ref03.md)
-- [Module 3 – Sensor Characterization, Calibration & Data Quality](Module01/README.md), 
-  [Reflection 3]([Reflections/ref03.md](https://github.com/Conger-Y/iot-portfolio-template/blob/main/Reflections/03ref.md))
-- [Module 4 – Liquid Measurement & Sensor Selection](Module01/README.md), 
-  [Reflection 4]([Reflections/ref04.md](https://github.com/Conger-Y/iot-portfolio-template/blob/main/Reflections/ref04.md))
-- [Module 5 – LEDs & Light as Output](Module01/README.md), 
-  [Reflection 5]([Reflections/ref05.md](https://github.com/Conger-Y/iot-portfolio-template/blob/main/Reflections/reflc05.md))
+- [Module 2 – Buses & I²C: From Simple Pins to One Bus, Many Devices](Module02/Module02/pins-and-dividers.md),[Reflection 2](Reflections/ref02.md)
+- [Module 3 – Sensor Characterization, Calibration & Data Quality](Module03/README.md), [Reflection 3](Reflections/03ref.md)
+- [Module 4 – Liquid Measurement & Sensor Selection](Module 4/github (3).md), [Reflection 4](Reflections/ref04.md)
+- [Module 5 – LEDs & Light as Output](Module05/module_05_lab_report (1).md), [Reflection 5](Reflections/ref05.md)
 - [Module 6 – LED Animation, Sound & Interactive Installations](Module01/README.md), 
   [Reflection 6]([Reflections/ref06.md](https://github.com/Conger-Y/iot-portfolio-template/blob/main/Reflections/ref06.md))
 - [Module 7 – Motors & Motion Actuators](Module01/README.md), 
