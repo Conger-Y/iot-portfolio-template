@@ -143,6 +143,9 @@ To address fouling, bio-film buildup, and suspended particulates inherent in bla
 
 * **Key Finding**: At half depth, the tapered cup holds **`40.3%`** of full volume because the vessel widens toward the top. Using the **median** (`388.95 g`) effectively rejects mechanical placement outliers (`353.3 g`). For production accuracy, multi-point calibration near the full-load range (`300–400 g`) is recommended rather than extrapolating from a `20 g` weight.
 
+
+
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/blob/main/Module04/README.md)](URL)
 ---
 
 ## 4. Comparative Sensor Selection Matrix
