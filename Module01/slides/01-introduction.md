@@ -34,8 +34,7 @@ Then, following the AI's prompts, we installed a push button on the breadboard a
 
 <img width="2049" height="1280" alt="29ca29d32cd3b4c32258bbec117bab04" src="https://github.com/user-attachments/assets/1f12e5f8-c2be-4f63-9233-f0bbc77d1cae" />
 
-This task was executed by my partner. The implementation was about ... 
-It is [here](https://github.com/partner/iot-portfolio/Module02/Readme.md#task-2).
+
 
 #### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module01)](URL)
 ## Reflection 2
