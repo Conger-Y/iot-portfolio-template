@@ -16,7 +16,7 @@ My personal profile and expectations, you can find [here](Module01/README.md#tas
 
 ## Table of Contents
 
-- [Module 1 – Foundations: Electronics, Arduino & Measurement]((https://github.com/Conger-Y/iot-portfolio-template/blob/main/Module01/slides/01-introduction.md)), 
+- [Module 1 – Foundations: Electronics, Arduino & Measurement]([Module01/README.md](https://github.com/Conger-Y/iot-portfolio-template/blob/main/Module01/slides/01-introduction.md)), 
   [Reflection 1]([Reflections/ref01.md](https://github.com/Conger-Y/iot-portfolio-template/blob/main/Reflections/ref01.md))
 - [Module 2 – Buses & I²C: From Simple Pins to One Bus, Many Devices](Module02/README.md),
   [Reflection 2](Reflections/ref02.md), [Reflection 3](Reflections/ref03.md)
