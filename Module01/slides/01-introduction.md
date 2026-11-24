@@ -22,7 +22,7 @@ Guided by AI, we learned about the characteristics of a breadboard by asking for
 <img width="1280" height="1706" alt="508a41e349f6a187a79258c723cb49d5" src="https://github.com/user-attachments/assets/8ae652ae-6116-460d-93d5-024772d9365f" />
 <img width="1280" height="1706" alt="d8ed8e8519c23d6c498efab943b0952d" src="https://github.com/user-attachments/assets/5f6c5c8e-c115-4f5e-9802-3ec67577813b" />
 
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module01)](URL)
 Then, following the AI's prompts, we installed a push button on the breadboard and successfully performed pull-up/pull-down operations on the LED light using the button.
 
 
@@ -37,6 +37,7 @@ Then, following the AI's prompts, we installed a push button on the breadboard a
 This task was executed by my partner. The implementation was about ... 
 It is [here](https://github.com/partner/iot-portfolio/Module02/Readme.md#task-2).
 
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module01)](URL)
 ## Reflection 2
 At the beginning of this task, my partner and I couldn't figure out how to properly connect the ESP32 to the computer. It wasn't until we received guidance from our professor and downloaded the necessary plugins that we finally got it running successfully
 
@@ -146,7 +147,6 @@ void loop() {
 
 
 
-## Reflection 3
 
 
 
@@ -256,13 +256,10 @@ $$R_{LDR} = 10,000\ \Omega \cdot \frac{3.300\text{ V} - 0.988\text{ V}}{0.988\te
 <img width="2042" height="1280" alt="61eb48b7461ab16fecbb3332a0be6ccb" src="https://github.com/user-attachments/assets/785754f6-bdf0-4b75-9673-3d29b14d7894" />
 
 
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/tree/main/Module01)](URL)
 
 
 
-https://github.com/user-attachments/assets/b7737f9d-c485-45a4-8086-59e24560644d
-
-## Reflection 4
-Initially, we hypothesized an inverse relationship between light intensity and the ADC value—meaning the brighter the light, the lower the ADC reading. When we uncovered the photoresistor and observed an instantaneous drop in the ADC value, our hypothesis was confirmed
 
 
 
