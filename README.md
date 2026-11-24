@@ -16,7 +16,7 @@ My personal profile and expectations, you can find [here](Module01/README.md#tas
 
 ## Table of Contents
 
-- - [Module 1 – Foundations: Electronics, Arduino & Measurement](Module01/slides/01-introduction.md), [Reflection 1](Reflections/ref01.md)
+- [Module 1 – Foundations: Electronics, Arduino & Measurement](Module01/slides/01-introduction.md), [Reflection 1](Reflections/ref01.md)
 - [Module 2 – Buses & I²C: From Simple Pins to One Bus, Many Devices](Module02/README.md),
   [Reflection 2](Reflections/ref02.md), [Reflection 3](Reflections/ref03.md)
 - [Module 3 – Sensor Characterization, Calibration & Data Quality](Module01/README.md), 
