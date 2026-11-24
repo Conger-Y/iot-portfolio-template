@@ -41,6 +41,8 @@ Module05/
 ### Key Concept: Duty Cycle
 Pulse-width modulation (PWM) switches the GPIO output rapidly between $0\text{ V}$ and $3.3\text{ V}$. The **duty cycle** (`0` to `255`, corresponding to $0\%$ to $100\%$ on-time per period) determines the average current delivered to the LED and therefore its perceived brightness.
 
+
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/blob/main/Module05/README.md)](URL)
 ---
 
 ## Task 2 — RGB LED Mixing & Channel Current Measurement (`task2-rgb/`)
@@ -78,7 +80,7 @@ Each color channel was driven individually at full duty cycle (`PWM = 255`), and
 
 ### Analysis of Channel Imbalance
 Although all three channels use identical $150\ \Omega$ resistors on a $3.3\text{ V}$ GPIO rail, the red channel draws more than twice the current of the blue channel. Because an LED clamps its forward voltage ($V_f \approx 1.9\text{ V}$ for red, $\approx 2.1\text{ V}$ for green, and $\approx 2.8\text{ V}$ to $3.2\text{ V}$ for blue), the remaining voltage dropped across the series resistor ($U_R = V_{\text{GPIO}} - V_f$) is largest for red and smallest for blue, directly explaining the measured current difference.
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/blob/main/Module05/README.md)](URL)
 ---
 
 ## Task 3 — Addressable WS2812B Strip & Power Budget (`task3-strip/`)
@@ -121,7 +123,7 @@ Using the worst-case design rule of **$60\text{ mA}$ per WS2812B pixel** at full
 
 ### Conclusion
 The prototype reliably controlled individual pixels and cleared the strip via serial commands. Comparing red and white current draw demonstrated how active sub-channels scale consumption, while comparing measured (`80 / 255`) and worst-case (`255 / 255`) budgets showed why firmware luminance limits, wire gauge, and controller overhead must all be factored into power supply selection.
-
+#### Source code is available [[here](https://github.com/liusihan54/iot-portfolio-templateSihan/blob/main/Module05/README.md)](URL)
 ---
 
 ## Study Log & Portfolio Evidence (Tasks 4 & 5)
